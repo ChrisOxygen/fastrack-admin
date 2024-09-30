@@ -24,7 +24,7 @@ function Signup() {
         Already an admin?
       </span>
       <Link
-        href="/login"
+        href="/"
         className="px-3 py-2 w-40 text-center mt-3 rounded-md bg-siteHeadingDark text-white text-xl capitalize font-bold"
       >
         Log in
