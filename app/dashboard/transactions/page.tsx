@@ -25,9 +25,9 @@ function Transactions() {
 
   return (
     <div className=" w-full sm:gap-6 gap-8 shrink  flex h-full flex-col ">
-      <div className=" flex flex-col items-start grid1364:items-end gap-3 mt-6 grid1364:flex-row">
+      <div className=" flex flex-col items-start grid1364:items-end gap-3 mt-6 lg:flex-row">
         <div className=" shrink-0">
-          <h1 className="text-4xl font-semibold text-siteHeadingDark font-dm_sans">
+          <h1 className="text-2xl font-semibold text-siteHeadingDark font-dm_sans">
             Transactions
           </h1>
           <span className="">All users transactions done with the app.</span>

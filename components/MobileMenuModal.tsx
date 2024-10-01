@@ -25,14 +25,14 @@ function MobileMenuModal() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
+  const isOpenAndPathname = open && pathname;
+
   useEffect(() => {
     const handleRouteChange = () => {
       onCloseModal();
     };
 
-    if (pathname) {
-      handleRouteChange();
-    }
+    handleRouteChange();
   }, [pathname]);
 
   const onOpenModal = () => setOpen(true);

@@ -98,7 +98,7 @@ function TransactionDetails({ transaction }: { transaction: TransactionType }) {
   }
 
   return (
-    <section className="mx-auto mt-10 flex w-full max-w-[800px] flex-col items-center gap-10">
+    <section className="mx-auto max-h-screen overflow-scroll py-10 flex w-full max-w-[800px] flex-col items-center gap-10">
       <div className="flex flex-col items-center gap-6">
         <h3 className="font-dm_sans text-xl font-semibold text-siteHeadingDark">
           Amount

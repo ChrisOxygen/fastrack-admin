@@ -41,7 +41,7 @@ function Dashboard() {
         {getGreeting()}, {firstName}
       </h4>
       <Overview data={data} />
-      <div className=" w-full block md:grid md:grid-rows-1 ">
+      <div className=" w-full block md:grid md:grid-rows-1 overflow-scroll ">
         <RecentActivity />
       </div>
     </main>

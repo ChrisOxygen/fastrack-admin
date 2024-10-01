@@ -38,7 +38,7 @@ function Users() {
   const firstName = data.fullName.split(" ")[0];
   return (
     <main className=" w-full overflow-auto md:overflow-hidden  grid md:grid-rows-[max-content_max-content_minmax(0,1fr)] grid-rows-[max-content_max-content_max-content] grid-flow-row h-full  gap-5 ">
-      <h4 className=" font-dm_sans text-4xl text-siteHeadingDark">
+      <h4 className=" font-dm_sans text-3xl text-siteHeadingDark">
         {getGreeting()}, {firstName}
       </h4>
       <Overview data={data} />

@@ -44,6 +44,7 @@ function Select({
 }: SelectProps) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const dropDownRef = useRef<HTMLDivElement | null>(null);
+  const displayAreaRef = useRef<HTMLDivElement | null>(null);
   const { menuOpen, items } = state;
   useEffect(() => {
     dispatch({ type: "setItems", payload: filterItems });
@@ -53,7 +54,9 @@ function Select({
     function handleClickOutside(event: MouseEvent) {
       if (
         dropDownRef.current &&
-        !dropDownRef.current.contains(event.target as Node)
+        displayAreaRef.current &&
+        !dropDownRef.current.contains(event.target as Node) &&
+        !displayAreaRef.current.contains(event.target as Node)
       ) {
         dispatch({ type: "toggleMenu" });
       }
@@ -83,10 +86,13 @@ function Select({
     selectItem({ ...item, filterType: currentFilter });
   }
   return (
-    <div className="relative font-dm_sans text-siteHeadingDark  ">
+    <div
+      className="relative font-dm_sans text-siteHeadingDark  "
+      ref={displayAreaRef}
+    >
       <button
         onClick={() => handleMenuToggle()}
-        className={`font-bold flex items-center justify-between py-3 px-4 rounded-xl border w-full  sm:w-[240px] ${
+        className={`font-bold flex items-center justify-between py-3 px-4 rounded-xl border w-full  sm:w-[160px] ${
           menuOpen ? "border-green-500/30" : "border-siteHeadingDark/30"
         }`}
       >

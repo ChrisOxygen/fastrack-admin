@@ -59,7 +59,7 @@ function AllCustomers({ allCustomers }: AllCustomersProps) {
   return (
     <section className="w-full flex flex-col gap-3 overflow-auto md:overflow-hidden rounded-2xl border border-siteHeadingDark/25 ">
       <div className=" flex flex-wrap gap-4 items-center w-full p-4 ">
-        <h3 className=" shrink-0 text-3xl font-dm_sans text-siteHeadingDark font-semibold mr-auto">
+        <h3 className=" shrink-0 text-2xl font-dm_sans text-siteHeadingDark font-semibold mr-auto">
           Customer List
         </h3>
         <div className=" flex items-center gap-3">

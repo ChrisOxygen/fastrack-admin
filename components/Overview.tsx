@@ -48,7 +48,7 @@ function Overview({ data }: OverviewProps) {
     <div className="w-full  grid grid-cols-1 xsm:grid-cols-2 grid-rows-[max-content_max-content_max-content] xsm:grid-rows-2 sm:grid-rows-1 sm:grid-cols-3 lg:grid-cols-4 gap-5">
       <div className="border border-siteHeadingDark/25 rounded-xl p-4 xsm:col-span-2 flex flex-col gap-2 font-dm_sans text-siteHeadingDark">
         <span className="text-siteHeadingDark/40">Total Balance</span>
-        <span className="text-3xl font-bold">
+        <span className="text-2xl font-bold">
           {formatCurrency(totalBalace)}
         </span>
         <p className=" font-semibold">
@@ -60,26 +60,26 @@ function Overview({ data }: OverviewProps) {
         <div className="flex flex-col xsm:flex-row gap-4 w-full mt-3">
           <Link
             href="/dashboard/pending"
-            className="bg-siteHeadingDark text-center flex justify-center rounded-lg px-5 py-4 text-white font-semibold w-full"
+            className="bg-siteHeadingDark text-center flex justify-center rounded-lg px-4 py-3 text-white font-semibold w-full"
           >
             View Pending
           </Link>
           <Link
             href="/dashboard/transactions"
-            className="bg-siteHeadingDark/10 text-center flex justify-center rounded-lg px-5 py-4 text-siteHeadingDark font-semibold w-full"
+            className="bg-siteHeadingDark/10 text-center flex justify-center rounded-lg px-4 py-3 text-siteHeadingDark font-semibold w-full"
           >
             View All
           </Link>
         </div>
       </div>
-      <div className="border text-siteHeadingDark border-siteHeadingDark/25 rounded-xl p-4 flex flex-col gap-3 items-start">
+      <div className="border text-siteHeadingDark border-siteHeadingDark/25 rounded-xl p-4 flex flex-col gap-2 items-start">
         <span className=" p-4 rounded-full border border-green-500 text-green-500 text-2xl">
           <FiCreditCard />
         </span>
         <span className=" text-siteHeadingDark text-xl font-semibold">
           Deposits
         </span>
-        <span className="text-3xl font-bold">
+        <span className="text-2xl font-bold">
           {formatCurrency(totalDeposits)}
         </span>
         <p className=" font-semibold">
@@ -87,14 +87,14 @@ function Overview({ data }: OverviewProps) {
           pending deposit.
         </p>
       </div>
-      <div className="border lg:flex flex-col items-start flex sm:hidden border-siteHeadingDark/25 rounded-xl p-4 gap-3">
+      <div className="border lg:flex flex-col items-start flex sm:hidden border-siteHeadingDark/25 rounded-xl p-4 gap-2">
         <span className=" p-4 rounded-full border border-orange-500 text-orange-500 text-2xl">
           <FiUsers />
         </span>
         <span className=" text-siteHeadingDark text-xl font-semibold">
           Registered Users
         </span>
-        <span className="text-3xl font-bold">{totalUsers} Users</span>
+        <span className="text-2xl font-bold">{totalUsers} Users</span>
         <p className=" font-semibold">
           <span className="text-orange-500 underline">{newUsers}</span> new
           users.

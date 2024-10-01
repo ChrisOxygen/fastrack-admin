@@ -96,9 +96,9 @@ function User() {
   );
 
   return (
-    <section className="w-full overflow-auto md:overflow-hidden  grid md:grid-rows-[max-content_max-content_max-content_max-content_minmax(0,1fr)] grid-rows-[max-content_max-content_max-content_max-content_max-content] grid-flow-row justify-items-center h-full gap-5 ">
+    <section className=" relative w-full overflow-scroll py-10  grid md:grid-rows-[max-content_max-content_max-content_max-content_minmax(0,1fr)] grid-rows-[max-content_max-content_max-content_max-content_max-content] grid-flow-row justify-items-center h-full gap-5 ">
       <button
-        className=" absolute right-4 top-4 text-2xl"
+        className=" absolute  right-4 top-4 text-2xl"
         onClick={() => router.back()}
       >
         <FiX />
@@ -108,8 +108,8 @@ function User() {
           src="/customer-avatar.jpg"
           alt="customer image"
           className="  rounded-full"
-          width={200}
-          height={200}
+          width={130}
+          height={130}
         />
         <div className=" flex flex-col gap-2 font-dm_sans items-center ">
           <span className=" text-2xl font-bold text-siteHeadingDark">
@@ -119,7 +119,7 @@ function User() {
         </div>
       </div>
       <div className="  w-full max-w-[600px] border-t border-b border-siteHeadingDark/30 p-5 flex sm:flex-row flex-col items-start gap-4 justify-between">
-        <div className=" w-full flex flex-col gap-4 items-center">
+        <div className=" w-full flex flex-col gap-2 items-center">
           <span className=" font-dm_sans text-siteHeadingDark font-semibold text-lg">
             Balance
           </span>
@@ -127,7 +127,7 @@ function User() {
             {formatCurrency(balance)}
           </span>
         </div>
-        <div className=" w-full flex flex-col gap-4 items-center sm:px-10 px-0 py-8 sm:py-0 sm:border-x border-x-0 sm:border-y-0 border-y border-siteHeadingDark/30">
+        <div className=" w-full flex flex-col gap-2 items-center sm:px-10 px-0 py-8 sm:py-0 sm:border-x border-x-0 sm:border-y-0 border-y border-siteHeadingDark/30">
           <span className=" font-dm_sans text-siteHeadingDark font-semibold text-lg">
             Total Deposit
           </span>
@@ -135,7 +135,7 @@ function User() {
             {formatCurrency(totalDeposits)}
           </span>
         </div>
-        <div className=" w-full flex flex-col gap-4 items-center">
+        <div className=" w-full flex flex-col gap-2 items-center">
           <span className="  font-dm_sans text-siteHeadingDark font-semibold text-lg">
             Total Withdrawal
           </span>
@@ -197,7 +197,7 @@ function User() {
         <span className="h-[1px] w-full bg-siteHeadingDark/25"></span>
       </div>
 
-      <div className="w-full block md:grid md:grid-rows-[minmax(30vh,80vh)] ">
+      <div className="w-full block md:grid md:grid-rows-[minmax(50vh,80vh)] ">
         <UserTransactions transactions={transactions} />
       </div>
     </section>
