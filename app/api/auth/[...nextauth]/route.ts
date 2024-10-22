@@ -2,7 +2,6 @@ import { AuthOptions, DefaultSession } from "next-auth";
 import NextAuth from "next-auth/next";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-// import User from "@/models/user";
 import { connectToDatabase } from "@/utils/database";
 import Admin from "@/models/admin";
 import { ErrorWithMessageAndStatus } from "@/types";
