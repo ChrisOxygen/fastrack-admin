@@ -1,6 +1,6 @@
 "use client";
 
-import { fetchAdmin } from "@/utils/services";
+import { fetchAdmin } from "@/lib/actions/admin.actions";
 import { useQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -18,6 +18,7 @@ function useFetchAdmin() {
   const { isPending, isError, data, error } = useQuery({
     queryKey: ["admin"],
     queryFn: () => fetchAdmin(user?.id),
+    enabled: !!user?.id,
   });
 
   return { session, isPending, isError, data, error };

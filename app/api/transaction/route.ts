@@ -1,4 +1,4 @@
-import { Transaction } from "@/lib/database/models/transaction.model";
+import Transaction from "@/lib/database/models/transaction.model";
 
 import { connectToDatabase } from "@/utils/database";
 

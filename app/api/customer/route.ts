@@ -1,4 +1,4 @@
-import { Transaction } from "@/lib/database/models/transaction.model";
+import Transaction from "@/lib/database/models/transaction.model";
 import User from "@/models/user";
 import { CustomError } from "@/types";
 import { connectToDatabase } from "@/utils/database";

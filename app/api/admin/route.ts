@@ -1,10 +1,8 @@
 import Admin from "@/models/admin";
 
-import { Transaction } from "@/lib/database/models/transaction.model";
+import Transaction from "@/lib/database/models/transaction.model";
 import User from "@/models/user";
 import { connectToDatabase } from "@/utils/database";
-import bcrypt from "bcryptjs";
-import mongoose from "mongoose";
 
 export async function POST(req: Request) {
   console.log("admin API fired");
