@@ -11,6 +11,8 @@ function useFetchAdmin() {
 
   if (!session) {
     router.push("/");
+  } else {
+    console.log("session", session);
   }
 
   const user = session?.user!;

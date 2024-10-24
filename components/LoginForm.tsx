@@ -9,6 +9,7 @@ import LoadingSpinner from "./LoadingSpinner";
 import Link from "next/link";
 import Image from "next/image";
 import useFetchAdmin from "@/hooks/useFetchAdmin";
+import { useSession } from "next-auth/react";
 
 type LoginInputs = {
   email: string;
@@ -19,7 +20,7 @@ function LoginForm() {
   const queryClient = useQueryClient();
   const router = useRouter();
 
-  const { session, isPending, isError, data } = useFetchAdmin();
+  const { data: session } = useSession();
   const {
     register,
     handleSubmit,
@@ -66,7 +67,7 @@ function LoginForm() {
     mutate(data);
   };
 
-  if (submitFormPending || isPending) {
+  if (submitFormPending) {
     return <LoadingSpinner />;
   }
 
