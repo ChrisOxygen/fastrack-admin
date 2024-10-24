@@ -1,7 +1,7 @@
 "use server";
 
 import { connectToDatabase } from "../database";
-import { Transaction } from "../database/models/transaction.model";
+import Transaction from "../database/models/transaction.model";
 import User from "../database/models/user.model";
 import { handleError } from "../errorHandler";
 import { getTransactionId } from "../utils";
