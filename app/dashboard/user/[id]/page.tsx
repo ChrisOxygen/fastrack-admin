@@ -10,6 +10,7 @@ import useFetchCustomer from "@/hooks/useFetchCustomer";
 import { deleteCustomer, topupCustomerBal } from "@/utils/services";
 import { formatCurrency } from "@/utils/tools";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
@@ -176,18 +177,14 @@ function User() {
             </div>
           </div>
         </ModalBtn>
-        <ModalBtn
-          isLoading={TopupFormPending}
-          isSuccess={isSuccess}
-          bgColor="bg-green-500"
-          btnText="Add Cash"
+        <Link
+          href={`/dashboard/add-to-balance/${id}`}
+          className={clsx(
+            " text-lg rounded-xl text-center px-6 py-3 font-dm_sans font-bold text-white w-full bg-green-500"
+          )}
         >
-          <TopupCustomerBalance
-            isLoading={TopupFormPending}
-            userId={id as string}
-            topupFn={mutate}
-          />
-        </ModalBtn>
+          Add cash
+        </Link>
       </div>
       <div className="w-full gap-3 items-center text-center justify-center max-w-[600px] grid grid-cols-[minmax(0,1fr)_minmax(200px,240px)_minmax(0,1fr)]">
         <span className="h-[1px] w-full bg-siteHeadingDark/25"></span>

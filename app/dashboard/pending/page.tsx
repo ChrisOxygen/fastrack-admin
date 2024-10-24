@@ -18,9 +18,11 @@ function PendingTransactions() {
     resetFilters,
   } = useTransactionsContext()!;
 
-  const allPendingTransactions = filteredTransactions.filter(
-    (transaction) => transaction.status === "pending"
-  );
+  const allPendingTransactions = filteredTransactions
+    .filter((transaction) => transaction.status === "pending")
+    .sort((a, b) => {
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    });
 
   if (isPending) {
     return <LoadingSpinner />;

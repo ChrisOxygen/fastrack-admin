@@ -9,6 +9,7 @@ import {
   useTransactionsContext,
 } from "@/providers/TransactionContext";
 import { UserData } from "@/types";
+import { ScrollArea } from "@radix-ui/react-scroll-area";
 import React, { useReducer } from "react";
 
 const initialState: StateType = {
@@ -87,8 +88,8 @@ function UserTransactions({
     typesFilterActive,
   } = state;
 
-  const filteredTransactions = transactions.filter(
-    (transaction, index, arr) => {
+  const filteredTransactions = transactions
+    .filter((transaction, index, arr) => {
       const typesFilterArr = transactionTypes
         .filter((type) => type.isSelected)
         .map((type) => type.label);
@@ -121,8 +122,10 @@ function UserTransactions({
       if (!state.typesFilterActive && !state.statusFilterActive) {
         return transaction;
       }
-    }
-  );
+    })
+    .sort((a, b) => {
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    });
 
   function selectFilterItem({
     filterType,

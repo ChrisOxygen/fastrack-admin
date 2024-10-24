@@ -7,6 +7,7 @@ import clsx from "clsx";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { runTransaction } from "@/utils/services";
 import LoadingSpinner from "./LoadingSpinner";
+import ApproveTransaction from "./ApproveTransaction";
 
 function getTransactionTitle(type: string) {
   switch (type) {
@@ -197,14 +198,15 @@ function TransactionDetails({ transaction }: { transaction: TransactionType }) {
         ) : (
           <div className="w-full flex flex-col items-center gap-5">
             <div className="flex w-full max-w-[500px] flex-col gap-4 sm:flex-row">
-              <button
+              {/* <button
                 className="grid w-full place-items-center rounded-xl bg-green-600 px-6 py-3 font-dm_sans text-lg font-bold text-white"
                 onClick={function () {
                   executeTransaction({ id, action: "approve" });
                 }}
               >
                 Approve
-              </button>
+              </button> */}
+              <ApproveTransaction transactionId={id} amount={amount} />
               <button
                 className="grid w-full place-items-center rounded-xl bg-red-500 px-6 py-3 font-dm_sans text-lg font-bold text-white"
                 onClick={() => executeTransaction({ id, action: "decline" })}
