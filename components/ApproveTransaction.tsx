@@ -26,6 +26,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import LoadingSpinner from "./LoadingSpinner";
 
 type ApproveTransactionProps = {
   transactionId: string;
@@ -70,6 +71,10 @@ export default function ApproveTransaction({
       amount: values.amount,
       transactionId,
     });
+  }
+
+  if (isPending) {
+    return <LoadingSpinner />;
   }
   return (
     <Dialog>
