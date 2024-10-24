@@ -1,6 +1,6 @@
 import Code from "@/models/code";
 import DepositTransaction from "@/models/depositTransaction";
-import Transaction from "@/models/transaction";
+import { Transaction } from "@/lib/database/models/transaction.model";
 import TransferTransaction from "@/models/transferTransaction";
 import User from "@/models/user";
 import WithdrawalTransaction from "@/models/withdrawalTransaction";

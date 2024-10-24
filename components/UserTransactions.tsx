@@ -89,6 +89,9 @@ function UserTransactions({
   } = state;
 
   const filteredTransactions = transactions
+    .sort((a, b) => {
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    })
     .filter((transaction, index, arr) => {
       const typesFilterArr = transactionTypes
         .filter((type) => type.isSelected)
@@ -122,9 +125,6 @@ function UserTransactions({
       if (!state.typesFilterActive && !state.statusFilterActive) {
         return transaction;
       }
-    })
-    .sort((a, b) => {
-      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
     });
 
   function selectFilterItem({

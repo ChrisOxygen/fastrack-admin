@@ -1,6 +1,6 @@
 import Admin from "@/models/admin";
-import Code from "@/models/code";
-import Transaction from "@/models/transaction";
+
+import { Transaction } from "@/lib/database/models/transaction.model";
 import User from "@/models/user";
 import { connectToDatabase } from "@/utils/database";
 import bcrypt from "bcryptjs";

@@ -41,5 +41,5 @@ const transactionSchema = new Schema(
   { timestamps: true }
 );
 
-const Transaction =
+export const Transaction =
   models.Transaction || model("Transaction", transactionSchema);
