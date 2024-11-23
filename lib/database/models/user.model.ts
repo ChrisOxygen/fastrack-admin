@@ -1,12 +1,12 @@
 import { model, models, Schema, Document } from "mongoose";
 
-// TypeScript interface matching the Mongoose schema style
+// TypeScript interface for the User model
 export interface IUser extends Document {
   firstName: string;
   lastName: string;
   email: string;
   password: string;
-  balance: number;
+  balance?: number;
   referralCode?: string;
 }
 
@@ -38,10 +38,10 @@ const userSchema = new Schema(
       unique: true,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 // Create or retrieve the existing Mongoose model
-const User = models.User || model<IUser>("User", userSchema);
+const User = models?.User || model<IUser>("User", userSchema);
 
 export default User;

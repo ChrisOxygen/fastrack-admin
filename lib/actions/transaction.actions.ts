@@ -1,10 +1,12 @@
 "use server";
 
+import { CreateTransactionType } from "@/types";
 import { connectToDatabase } from "../database";
 import Transaction from "../database/models/transaction.model";
 import User from "../database/models/user.model";
 import { handleError } from "../errorHandler";
 import { getTransactionId } from "../utils";
+import ShortUniqueId from "short-unique-id";
 
 export async function getAllTransactions() {
   try {
@@ -25,7 +27,6 @@ export async function createNewTransaction(transactionData: {
 }) {
   const { type, amount, userId } = transactionData;
 
-  console.log("transactionData", transactionData);
   try {
     await connectToDatabase();
 
@@ -47,8 +48,6 @@ export async function createNewTransaction(transactionData: {
 
     user.balance += amount;
     await user.save();
-
-    console.log("the updated user", user);
 
     return newTransaction ? JSON.parse(JSON.stringify(newTransaction)) : null;
   } catch (error) {
@@ -84,3 +83,59 @@ export async function approveTransaction({
     handleError(error, "approveTransaction");
   }
 }
+
+export const createTransaction = async (
+  transactionDetails: CreateTransactionType
+) => {
+  const { type, amount, status, fee, userId } = transactionDetails;
+  try {
+    await connectToDatabase();
+
+    const user = await User.findById({ _id: userId });
+
+    if (type === "withdrawal" && user.balance < amount + fee) {
+      throw new Error("Insufficient balance");
+    }
+
+    const uid = new ShortUniqueId();
+
+    const uniqueTransactionId = `TR-${uid.stamp(10)}`;
+
+    const transactionObj = {
+      transactionId: uniqueTransactionId,
+      type: type,
+      amount: amount,
+      status: status,
+      fee: fee,
+      user: user._id,
+    };
+
+    const newTransaction = await Transaction.create(transactionObj);
+
+    if (newTransaction.status === "success") {
+      if (newTransaction.type === "investment deposit") {
+        user.balance -= amount;
+      }
+      if (newTransaction.type === "investment payout") {
+        user.balance += amount;
+      }
+
+      if (type === "signup bonus") {
+        user.balance += amount;
+      }
+    }
+    if (newTransaction.status === "pending") {
+      if (newTransaction.type === "withdrawal") {
+        user.balance -= amount + fee;
+      }
+    }
+
+    await user.save();
+
+    return newTransaction ? JSON.parse(JSON.stringify(newTransaction)) : null;
+  } catch (error) {
+    // handleError(error, "createTransaction");
+
+    throw error;
+  }
+};

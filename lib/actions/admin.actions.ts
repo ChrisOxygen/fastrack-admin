@@ -13,13 +13,9 @@ export async function fetchAdmin(id: string) {
 
     const admin = await Admin.findOne({ _id: id });
 
-    console.log("admin", admin);
     const allTransactions = await Transaction.find();
 
-    console.log("allTransactions", allTransactions);
     const allUsers = await User.find();
-
-    console.log("allUsers", allUsers);
 
     const users = allUsers.map((user) => {
       return {
@@ -38,8 +34,6 @@ export async function fetchAdmin(id: string) {
       users: users,
       transactions: allTransactions,
     };
-
-    console.log("AdminData", AdminData);
 
     return AdminData ? JSON.parse(JSON.stringify(AdminData)) : null;
   } catch (error) {

@@ -68,3 +68,29 @@ export type CustomError = Error & {
   message: string;
   status: number;
 };
+
+export type InvestmentType = {
+  _id: string;
+  investmentPackage: string;
+  amount: number;
+  status: string;
+  returns: number;
+  user: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type CreateTransactionType = {
+  type:
+    | "investment deposit"
+    | "investment payout"
+    | "withdrawal"
+    | "transfer"
+    | "signup bonus"
+    | "referral bonus"
+    | "deposit";
+  amount: number;
+  status: "pending" | "success" | "error";
+  fee: number;
+  userId: string;
+};

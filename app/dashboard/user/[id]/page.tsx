@@ -178,12 +178,12 @@ function User() {
           </div>
         </ModalBtn>
         <Link
-          href={`/dashboard/add-to-balance/${id}`}
+          href={`/dashboard/user-investments/${id}`}
           className={clsx(
             " text-lg rounded-xl text-center px-6 py-3 font-dm_sans font-bold text-white w-full bg-green-500"
           )}
         >
-          Add cash
+          User Investments
         </Link>
       </div>
       <div className="w-full gap-3 items-center text-center justify-center max-w-[600px] grid grid-cols-[minmax(0,1fr)_minmax(200px,240px)_minmax(0,1fr)]">

@@ -5,7 +5,6 @@ import Select from "@/components/Select";
 import TransactionRow from "@/components/TransactionRow";
 import { useTransactionsContext } from "@/providers/TransactionContext";
 import React, { useEffect } from "react";
-import { FiActivity } from "react-icons/fi";
 
 function PendingTransactions() {
   const {
