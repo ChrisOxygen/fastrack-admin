@@ -27,6 +27,8 @@ import {
 } from "./ui/form";
 import LoadingSpinner from "./LoadingSpinner";
 
+import { useRouter } from "next/navigation";
+
 type CompleteTransactionDialogProps = {
   buttonTitle: string;
   initialReturns: number;
@@ -45,6 +47,7 @@ function CompleteTransactionDialog({
   investmentId,
 }: CompleteTransactionDialogProps) {
   const queryClient = useQueryClient();
+  const router = useRouter();
 
   const { mutate, isPending: completeInvestmentPending } = useMutation({
     mutationFn: (data: { id: string; finalReturns: number }) => {
@@ -57,8 +60,9 @@ function CompleteTransactionDialog({
     onSuccess: (data) => {
       console.log("data", data);
       queryClient.invalidateQueries({
-        queryKey: ["customer", "investments", "investment"],
+        queryKey: ["customer", "investment"],
       });
+      router.refresh();
     },
   });
 

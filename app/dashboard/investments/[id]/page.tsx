@@ -5,7 +5,10 @@ import LoadingSpinner from "@/components/LoadingSpinner";
 import NonActiveBtn from "@/components/NonActiveBtn";
 import { Button } from "@/components/ui/button";
 import useGetinvestment from "@/hooks/useGetInvestment";
-import { completeInvestment } from "@/lib/actions/investment.actions";
+import {
+  completeInvestment,
+  getInvestment,
+} from "@/lib/actions/investment.actions";
 import { fetchUser } from "@/lib/actions/user.actions";
 import { formatToUSD } from "@/utils/services";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -17,10 +20,13 @@ import React from "react";
 function SingleIv() {
   const { id } = useParams();
 
-  const { isPending, data } = useGetinvestment(id as string);
+  const { isPending, isError, data, error } = useQuery({
+    queryKey: ["investmenmt", "customer"],
+    queryFn: () => getInvestment(id as string),
+  });
 
   const { status: getCustomerStatus, data: customer } = useQuery({
-    queryKey: ["customer", data?.user, "investment"],
+    queryKey: ["customer", "investment"],
     queryFn: () => fetchUser(data?.user!),
     // The query will not execute until the userId exists
     enabled: !!data?.user,
@@ -62,12 +68,12 @@ function SingleIv() {
           <span className="bg-gray-200 w-full h-[1px]"></span>
 
           {status === "processing" ? (
-            <CompleteTransactionDialog
-              buttonTitle="Complete investment"
-              initialReturns={returns}
-              amount={amount}
-              investmentId={id as string}
-            />
+            <Link
+              href={`/dashboard/investments/complete/${id}`}
+              className=" rounded-xl flex shrink-0 bg-green-500 font-dm_sans text-white uppercase font-semibold px-4 py-2 "
+            >
+              complete investment
+            </Link>
           ) : (
             <NonActiveBtn
               btnText="Complete investment"
