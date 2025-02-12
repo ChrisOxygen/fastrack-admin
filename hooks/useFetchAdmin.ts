@@ -17,6 +17,8 @@ function useFetchAdmin() {
 
   const user = session?.user!;
 
+  console.log("user", user);
+
   const { isPending, isError, data, error } = useQuery({
     queryKey: ["admin"],
     queryFn: () => fetchAdmin(user?.id),

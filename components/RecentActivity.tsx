@@ -15,7 +15,7 @@ function RecentActivity() {
           <span className="font-semibold text-siteGreen">
             <FiActivity />
           </span>
-          Resent Activity
+          Recent Activity
         </div>
       </div>
       <div

@@ -31,6 +31,6 @@ const adminSchema = new Schema<IAdmin>(
 );
 
 // Create or retrieve the existing Mongoose model
-const Admin = models.Admin || model<IAdmin>("Admin", adminSchema);
+const Admin = models?.Admin || model<IAdmin>("Admin", adminSchema);
 
 export default Admin;

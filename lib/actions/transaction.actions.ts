@@ -74,7 +74,9 @@ export async function approveTransaction({
 
     const user = await User.findOne({ _id: transaction.user });
 
-    user.balance += amount - transaction.fee;
+    if (transaction.type !== "withdrawal") {
+      user.balance += amount - transaction.fee;
+    }
 
     await user.save();
 

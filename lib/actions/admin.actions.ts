@@ -11,7 +11,9 @@ export async function fetchAdmin(id: string) {
   try {
     await connectToDatabase();
 
-    const admin = await Admin.findOne({ _id: id });
+    const admin = await Admin.findById(id);
+
+    console.log("---------admin", admin);
 
     const allTransactions = await Transaction.find();
 

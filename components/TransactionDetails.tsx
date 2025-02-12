@@ -1,6 +1,6 @@
 "use client";
 
-import { BiCheckCircle, BiCopy } from "react-icons/bi";
+import { BiCheckCircle } from "react-icons/bi";
 import Link from "next/link";
 import { RunTransactionType, TransactionType } from "@/types";
 import clsx from "clsx";
@@ -21,8 +21,10 @@ function getTransactionTitle(type: string) {
       return "Investment Bonus";
     case "referral bonus":
       return "Referral Bonus";
+    case "withdrawal":
+      return "withdrawal";
     default:
-      return "Investment";
+      return "Transaction";
   }
 }
 

@@ -6,7 +6,6 @@ import User from "@/models/user";
 import WithdrawalTransaction from "@/models/withdrawalTransaction";
 import { RunTransactionType } from "@/types";
 import { connectToDatabase } from "@/utils/database";
-import { tr } from "framer-motion/client";
 import { use } from "react";
 
 export async function POST(req: Request) {
@@ -131,6 +130,42 @@ export async function POST(req: Request) {
         if (!savedTransaction) {
           return new Response("Transaction not saved", { status: 500 });
         }
+      }
+    } else if (action === "decline") {
+      const { amount, type } = transaction;
+      if (type === "deposit") {
+        const depositeTransaction = await DepositTransaction.findOneAndDelete({
+          transaction: transaction._id,
+        });
+
+        if (!depositeTransaction) {
+          return new Response("Transaction not found", { status: 404 });
+        }
+      }
+
+      if (type === "withdrawal") {
+        const withdrawTransaction =
+          await WithdrawalTransaction.findOneAndDelete({
+            transaction: transaction._id,
+          });
+
+        if (!withdrawTransaction) {
+          return new Response("Transaction not found", { status: 404 });
+        }
+        user.balance += transaction.amount + transaction.fee;
+      }
+      transaction.status = "error";
+
+      const savedTransaction = await transaction.save();
+
+      if (!savedTransaction) {
+        return new Response("Transaction not saved", { status: 500 });
+      }
+
+      const savedUser = await user.save();
+
+      if (!savedUser) {
+        return new Response("User not saved", { status: 500 });
       }
     }
 
