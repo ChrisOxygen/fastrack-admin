@@ -15,7 +15,9 @@ export async function fetchAdmin(id: string) {
 
     console.log("---------admin", admin);
 
-    const allTransactions = await Transaction.find();
+    const allTransactions = await Transaction.find({}, null, {
+      sort: { createdAt: -1 },
+    });
 
     const allUsers = await User.find();
 
